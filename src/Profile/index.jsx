@@ -1,9 +1,22 @@
 import React from 'react';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import Header from './Header';
 
-const Profile = () => (
+export default () => (
   <React.Fragment>
-    <h1>Profile</h1>
+    <Header />
+    <Grid>
+      <Row>
+        <Col xs={3}>
+          <div>Info</div>
+        </Col>
+        <Col xs={6}>
+          <div>Tweets</div>
+        </Col>
+        <Col xs={3}>
+          <div>Right</div>
+        </Col>
+      </Row>
+    </Grid>
   </React.Fragment>
 );
-
-export default Profile;
