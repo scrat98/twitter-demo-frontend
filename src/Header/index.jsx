@@ -114,8 +114,8 @@ const UserSettingsDropdown = styled.button`
 `;
 
 const UserAvatarImg = styled.img`
-  width: 2rem;
-  height: 2rem;
+  width: 32px;
+  height: auto;
 `;
 
 export default () => (
