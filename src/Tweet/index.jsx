@@ -61,8 +61,7 @@ const UserAvatar = styled.img`
   width: 3rem;
   height: auto;
   position: absolute;
-  top: 0.5rem;
-  left: -3rem;
+  left: -3.5rem;
 `;
 
 const TweetTime = styled.span`
