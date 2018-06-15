@@ -21,6 +21,7 @@ const Navigation = styled.nav`
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
   background: #fff;
 `;
 
