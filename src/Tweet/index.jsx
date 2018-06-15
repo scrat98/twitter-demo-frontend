@@ -38,6 +38,7 @@ const Content = styled.div`
 `;
 
 const ContentHeader = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
 `;
@@ -54,6 +55,14 @@ const UserNickName = styled.span`
   color: #697787;
   font-weight: bold;
   margin-right: 0.2rem;
+`;
+
+const UserAvatar = styled.img`
+  width: 3rem;
+  height: auto;
+  position: absolute;
+  top: 0.5rem;
+  left: -3rem;
 `;
 
 const TweetTime = styled.span`
@@ -98,6 +107,7 @@ export default ({
   contextImg,
   userFullName,
   userNickName,
+  userAvatar,
   time,
   text,
   img,
@@ -112,6 +122,7 @@ export default ({
         <UserFullName>{userFullName}</UserFullName>
         <UserNickName>@{userNickName}</UserNickName>
         <TweetTime>• {time}</TweetTime>
+        <UserAvatar src={userAvatar} />
       </ContentHeader>
       <TweetText>{text}</TweetText>
       <TweetImg src={img} />

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Tweet from '../Tweet';
 
+import avatar from '../Profile/avatar.png';
 import pinned from '../Tweet/icons/pinned.svg';
 import tweet1 from './tweet1.png';
 import tweet3 from './tweet3.png';
@@ -30,6 +31,7 @@ export default () => (
         contextImg={pinned}
         userFullName="Every Interaction"
         userNickName="EveryInteract"
+        userAvatar={avatar}
         time="2 Mar 2015"
         text="We’ve made some more resources for all you wonderful #design folk everyinteraction.com/resources/ #webdesign #UI"
         img={tweet1}
@@ -43,6 +45,7 @@ export default () => (
       <Tweet
         userFullName="Every Interaction"
         userNickName="EveryInteract"
+        userAvatar={avatar}
         time="23h"
         text="Our new website concept; Taking you from… @ Every Interaction instagram.com/p/BNFGrfhBP3M/"
         replies={1}
@@ -55,6 +58,7 @@ export default () => (
       <Tweet
         userFullName="Every Interaction"
         userNickName="EveryInteract"
+        userAvatar={avatar}
         time="Nov 18"
         text="Variable web fonts are coming, and will open a world of opportunities for weight use online"
         img={tweet3}
