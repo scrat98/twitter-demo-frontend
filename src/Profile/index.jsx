@@ -17,7 +17,16 @@ export default () => (
       <Grid>
         <Row>
           <Col xs={3}>
-            <Info />
+            <Info
+              name="Every Interaction"
+              official
+              nickName="EveryInteraction"
+              followed
+              about="UX Design studio focussed problem solving creativity. Design to us is how can we make things *work* amazing."
+              location="London, UK"
+              ownUrl="https://everyinteraction.com"
+              joined="May 2008"
+            />
           </Col>
           <Col xs={6}>
             <Tweets />

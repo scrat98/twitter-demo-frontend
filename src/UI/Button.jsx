@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export default styled.button`
+  width: 100%;
+  margin: 0 0.5rem;
   padding: 0.5rem 1rem;
   font-size: 0.85rem;
   border: 1px solid #4ab3f4;

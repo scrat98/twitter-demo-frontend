@@ -1,3 +1,4 @@
 import React from 'react';
+import Tweet from '../Tweet';
 
-export default () => <div>Tweets</div>;
+export default () => <Tweet />;

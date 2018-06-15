@@ -91,7 +91,7 @@ const ActionsList = styled.ul`
 
 const Action = styled.li`
   display: flex;
-  margin: 0.5rem 1.25rem 0.5rem 0;
+  margin: 0.5rem;
 `;
 
 const UserSettingsDropdown = styled.button`
