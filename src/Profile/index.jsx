@@ -7,7 +7,7 @@ import Tweets from './Tweets';
 
 const MainContentWrapper = styled.div`
   background: #e6ecf0;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
 `;
 
 export default () => (
