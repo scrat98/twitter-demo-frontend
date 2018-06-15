@@ -5,7 +5,7 @@ import Profile from './Profile';
 import Header from './Header';
 
 const Content = styled.main`
-  padding-top: 3.4rem;
+  padding-top: 3.3rem;
 `;
 
 export default () => (

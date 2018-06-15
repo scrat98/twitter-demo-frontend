@@ -53,7 +53,7 @@ const NavigationLink = styled(NavLink)`
   color: #667580;
   font-weight: bold;
   font-size: 0.85rem;
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
   border-color: ${props =>
     props.activeClassName === 'active' ? '#1da1f2' : 'transparent'};
   text-decoration: none;
