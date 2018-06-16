@@ -1,11 +1,12 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import Statistics from './Statistics';
 import FollowButton from '../UI/FollowButton';
+
 import background from './background.png';
 import avatar from './avatar.png';
-import moreActions from './icons/moreActions.svg';
+import moreActionsIcon from './icons/more-actions.svg';
 
 const Background = styled.img`
   display: block;
@@ -46,53 +47,6 @@ const Avatar = styled.img`
   object-position: center;
 `;
 
-const StatisticList = styled.ul`
-  display: flex;
-  flex: 1;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-`;
-
-const Statistic = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const StatisticLink = styled(NavLink)`
-  margin-bottom: -1px;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #667580;
-  border-bottom: 3px solid transparent;
-  border-color: ${props =>
-    props.activeClassName === 'active' ? '#1da1f2' : 'transparent'};
-  text-decoration: none;
-
-  &:hover {
-    border-color: #1da1f2;
-    transition: all 0.15s ease-in-out;
-  }
-`;
-
-const StatisticName = styled.span`
-  font-size: 0.75rem;
-  font-weight: bold;
-  margin-bottom: 0.25rem;
-`;
-
-const StatisticValue = styled.span`
-  font-size: 1rem;
-  font-weight: bold;
-`;
-
 const ActionsWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -118,44 +72,13 @@ export default () => (
             </AvatarWrapper>
           </Col>
           <Col xs={6}>
-            <StatisticList>
-              <Statistic>
-                <StatisticLink exact to="/EveryInteract">
-                  <StatisticName>Tweets</StatisticName>
-                  <StatisticValue>8,058</StatisticValue>
-                </StatisticLink>
-              </Statistic>
-              <Statistic>
-                <StatisticLink exact to="/EveryInteract/following">
-                  <StatisticName>Following</StatisticName>
-                  <StatisticValue>721</StatisticValue>
-                </StatisticLink>
-              </Statistic>
-              <Statistic>
-                <StatisticLink exact to="/EveryInteract/followers">
-                  <StatisticName>Followers</StatisticName>
-                  <StatisticValue>1,815</StatisticValue>
-                </StatisticLink>
-              </Statistic>
-              <Statistic>
-                <StatisticLink exact to="/EveryInteract/likes">
-                  <StatisticName>Likes</StatisticName>
-                  <StatisticValue>460</StatisticValue>
-                </StatisticLink>
-              </Statistic>
-              <Statistic>
-                <StatisticLink exact to="/EveryInteract/lists">
-                  <StatisticName>Lists</StatisticName>
-                  <StatisticValue>2</StatisticValue>
-                </StatisticLink>
-              </Statistic>
-            </StatisticList>
+            <Statistics />
           </Col>
           <Col xs={3}>
             <ActionsWrapper>
               <FollowButton>Follow</FollowButton>
               <MoreActionsButton>
-                <img src={moreActions} alt="more actions" />
+                <img src={moreActionsIcon} alt="more actions" />
               </MoreActionsButton>
             </ActionsWrapper>
           </Col>
