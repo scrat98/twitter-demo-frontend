@@ -153,7 +153,7 @@ export default () => (
           </Action>
           <Action>
             <UserSettingsDropdown>
-              <UserAvatarImg src={avatar} />
+              <UserAvatarImg src={avatar} alt="avatar" />
             </UserSettingsDropdown>
           </Action>
           <Action>
