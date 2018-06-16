@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../UI/Button';
-import official from './icons/official.svg';
-import joined from './icons/joined.svg';
-import link from './icons/link.svg';
-import location from './icons/location.svg';
+
+import officialIcon from './icons/official.svg';
+import joinedIcon from './icons/joined.svg';
+import linkIcon from './icons/link.svg';
+import locationIcon from './icons/location.svg';
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,7 +21,7 @@ const Name = styled.h1`
   font-weight: bold;
 
   &:after {
-    content: url(${props => (props.official ? official : '')});
+    content: url(${props => (props.official ? officialIcon : '')});
     width: 20px;
     height: 20px;
     margin-left: 0.2rem;
@@ -32,10 +33,13 @@ const NickName = styled.h2`
   color: #697787;
   font-size: 0.75rem;
   font-weight: normal;
+`;
 
-  &:after {
-    content: ${props => (props.followed ? 'Follows you' : '')};
-  }
+const Followed = styled.span`
+  margin-left: 0.5rem;
+  color: #697787;
+  font-size: 0.65rem;
+  font-weight: normal;
 `;
 
 const About = styled.p`
@@ -51,7 +55,7 @@ const Location = styled.span`
   color: #697787;
 
   &:before {
-    background: url(${location}) no-repeat center center;
+    background: url(${locationIcon}) no-repeat center center;
     content: '';
     width: 20px;
     height: 20px;
@@ -67,7 +71,7 @@ const OwnUrl = styled.a`
   text-decoration: none;
 
   &:before {
-    background: url(${link}) no-repeat center center;
+    background: url(${linkIcon}) no-repeat center center;
     content: '';
     width: 20px;
     height: 20px;
@@ -82,7 +86,7 @@ const Joined = styled.span`
   color: #697787;
 
   &:before {
-    background: url(${joined}) no-repeat center center;
+    background: url(${joinedIcon}) no-repeat center center;
     content: '';
     width: 20px;
     height: 20px;
@@ -108,7 +112,10 @@ export default ({
 }) => (
   <Wrapper>
     <Name official={official}>{name}</Name>
-    <NickName followed={followed}>@{nickName} Follows you</NickName>
+    <NickName>
+      <span>@{nickName}</span>
+      {followed && <Followed>Follows you</Followed>}
+    </NickName>
     <About>{about}</About>
     <Location>{location}</Location>
     <OwnUrl href={ownUrl}>{ownUrl.replace(/(^\w+:|^)\/\//, '')}</OwnUrl>
