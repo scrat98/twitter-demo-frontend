@@ -31,14 +31,14 @@ const Name = styled.h1`
 const NickName = styled.h2`
   margin: 0 0 0.5rem 0;
   color: #697787;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: normal;
 `;
 
 const Followed = styled.span`
   margin-left: 0.5rem;
   color: #697787;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: normal;
 `;
 
