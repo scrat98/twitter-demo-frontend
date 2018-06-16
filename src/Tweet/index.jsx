@@ -65,7 +65,7 @@ const UserNickName = styled.span`
 
 const UserAvatar = styled.img`
   width: 3rem;
-  height: 3rem;
+  height: auto;
   position: absolute;
   left: -3.5rem;
   top: 0.1rem;
