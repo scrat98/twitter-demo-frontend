@@ -5,11 +5,11 @@ import { Link, NavLink } from 'react-router-dom';
 import Button from '../UI/Button';
 import Search from '../UI/Search';
 import avatar from '../Profile/avatar.png';
-import twitterLogo from './icons/twitterLogo.svg';
-import home from './icons/home.svg';
-import messages from './icons/messages.svg';
-import notifications from './icons/notifications.svg';
-import moments from './icons/moments.svg';
+import twitterLogo from './icons/twitter-logo.svg';
+import homeIcon from './icons/home.svg';
+import messagesIcon from './icons/messages.svg';
+import notificationsIcon from './icons/notifications.svg';
+import momentsIcon from './icons/moments.svg';
 
 const Header = styled.header`
   position: fixed;
@@ -124,22 +124,22 @@ export default () => (
       <Wrapper>
         <NavigationList>
           <Navigation>
-            <NavigationLink img={home} exact to="/">
+            <NavigationLink img={homeIcon} exact to="/">
               Home
             </NavigationLink>
           </Navigation>
           <Navigation>
-            <NavigationLink img={moments} exact to="/moments">
+            <NavigationLink img={momentsIcon} exact to="/moments">
               Moments
             </NavigationLink>
           </Navigation>
           <Navigation>
-            <NavigationLink img={notifications} exact to="/notifications">
+            <NavigationLink img={notificationsIcon} exact to="/notifications">
               Notifications
             </NavigationLink>
           </Navigation>
           <Navigation>
-            <NavigationLink img={messages} exact to="/messages">
+            <NavigationLink img={messagesIcon} exact to="/messages">
               Messages
             </NavigationLink>
           </Navigation>
