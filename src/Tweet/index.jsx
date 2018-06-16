@@ -7,6 +7,7 @@ import likesIcon from './icons/loves.svg';
 import retweetIcon from './icons/retweet.svg';
 
 const Wrapper = styled.div`
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -14,6 +15,10 @@ const Wrapper = styled.div`
   padding: 1rem 1rem 1rem 4rem;
   border-bottom: 1px solid #e6ecf0;
   background-color: #fff;
+
+  &:hover {
+    background-color: #f5f8fa;
+  }
 `;
 
 const Context = styled.span`
@@ -35,6 +40,7 @@ const Context = styled.span`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
 `;
 
 const ContentHeader = styled.div`
@@ -44,7 +50,7 @@ const ContentHeader = styled.div`
 `;
 
 const UserFullName = styled.span`
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #14171a;
   font-weight: bold;
   margin-right: 0.2rem;
@@ -62,6 +68,8 @@ const UserAvatar = styled.img`
   height: auto;
   position: absolute;
   left: -3.5rem;
+  top: 0.1rem;
+  border-radius: 50%;
 `;
 
 const TweetTime = styled.span`
@@ -71,9 +79,12 @@ const TweetTime = styled.span`
   margin-right: 0.2rem;
 `;
 
-const TweetText = styled.p``;
+const TweetText = styled.p`
+  margin: 0.5rem 0 0 0;
+`;
 
 const TweetImg = styled.img`
+  margin-top: 0.5rem;
   width: 100%;
   height: auto;
 `;
@@ -83,8 +94,8 @@ const ActionsList = styled.ul`
   flex: 1;
   align-items: center;
   padding: 0;
+  margin: 0;
   list-style: none;
-  margin: 1rem 0 0 0;
 `;
 
 const Action = styled.li`
@@ -115,7 +126,7 @@ export default ({
   likes,
 }) => (
   <Wrapper>
-    <Context img={contextImg}>{context}</Context>
+    {context && <Context img={contextImg}>{context}</Context>}
     <Content>
       <ContentHeader>
         <UserFullName>{userFullName}</UserFullName>
@@ -123,21 +134,21 @@ export default ({
         <TweetTime>• {time}</TweetTime>
         <UserAvatar src={userAvatar} />
       </ContentHeader>
-      <TweetText>{text}</TweetText>
-      <TweetImg src={img} />
+      {text && <TweetText>{text}</TweetText>}
+      {img && <TweetImg src={img} />}
     </Content>
     <ActionsList>
       <Action>
         <img src={commentIcon} alt="replies" />
-        <ActionCount>{replies}</ActionCount>
+        <ActionCount>{replies > 0 && replies}</ActionCount>
       </Action>
       <Action>
         <img src={retweetIcon} alt="retweet" />
-        <ActionCount>{retweets}</ActionCount>
+        <ActionCount>{retweets > 0 && retweets}</ActionCount>
       </Action>
       <Action>
         <img src={likesIcon} alt="likes" />
-        <ActionCount>{likes}</ActionCount>
+        <ActionCount>{likes > 0 && likes}</ActionCount>
       </Action>
       <Action>
         <img src={envelopeIcon} alt="message" />
