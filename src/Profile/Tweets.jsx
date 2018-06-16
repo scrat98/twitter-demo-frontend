@@ -37,10 +37,11 @@ const Navigation = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 0.5rem;
 `;
 
 const NavigationLink = styled(NavLink)`
-  padding: 0.5rem;
+  padding: 0.8rem 0;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -48,11 +49,18 @@ const NavigationLink = styled(NavLink)`
   font-weight: bold;
   font-size: 1.2rem;
   text-decoration: none;
-  color: ${props => (props.activeClassName === 'active' ? 'black' : '#1da1f2')};
+  color: #1da1f2;
 
   &:hover {
-    text-decoration: ${props =>
-      props.activeClassName === 'active' ? 'none' : 'underline'};
+    text-decoration: underline;
+  }
+
+  &.active {
+    color: black;
+  }
+
+  &.active:hover {
+    text-decoration: none;
   }
 `;
 
@@ -86,6 +94,7 @@ export default () => (
           time="2 Mar 2015"
           text="We’ve made some more resources for all you wonderful #design folk everyinteraction.com/resources/ #webdesign #UI"
           img={tweet1}
+          replies={0}
           retweets={17}
           likes={47}
         />
@@ -112,6 +121,9 @@ export default () => (
           time="Nov 18"
           text="Variable web fonts are coming, and will open a world of opportunities for weight use online"
           img={tweet3}
+          replies={0}
+          retweets={0}
+          likes={0}
         />
       </TweetWrapper>
     </TweetsList>
