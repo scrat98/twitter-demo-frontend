@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 export default styled.button`
-  width: 100%;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
   margin: 0 0.5rem;
   padding: 0.5rem 1rem;
   font-size: 0.85rem;
