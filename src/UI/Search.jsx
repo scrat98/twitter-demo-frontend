@@ -8,9 +8,7 @@ const SearchForm = styled.form`
   align-items: center;
 `;
 
-const SearchInput = styled.input.attrs({
-  placeholder: 'Search Twitter',
-})`
+const SearchInput = styled.input`
   padding: 0.5rem 2rem 0.5rem 1rem;
   background-color: #f5f8fa;
   border: 1px solid #e6ecf0;
@@ -27,9 +25,7 @@ const SearchInput = styled.input.attrs({
   }
 `;
 
-const SearchButton = styled.button.attrs({
-  type: 'submit',
-})`
+const SearchButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,8 +45,8 @@ const SearchButton = styled.button.attrs({
 
 export default () => (
   <SearchForm>
-    <SearchInput />
-    <SearchButton>
+    <SearchInput placeholder="Search Twitter" />
+    <SearchButton type="submit">
       <img src={search} alt="search" />
     </SearchButton>
   </SearchForm>
