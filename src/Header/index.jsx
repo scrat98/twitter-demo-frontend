@@ -1,15 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Grid } from 'react-flexbox-grid';
-import { Link, NavLink } from 'react-router-dom';
-import Button from '../UI/Button';
-import Search from '../UI/Search';
-import avatar from '../Profile/avatar.png';
+import { Link } from 'react-router-dom';
+import Navigation from './Navigation';
+import Actions from './Actions';
 import twitterLogo from './icons/twitter-logo.svg';
-import homeIcon from './icons/home.svg';
-import messagesIcon from './icons/messages.svg';
-import notificationsIcon from './icons/notifications.svg';
-import momentsIcon from './icons/moments.svg';
 
 const Header = styled.header`
   position: fixed;
@@ -27,53 +22,6 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-const NavigationList = styled.ul`
-  display: flex;
-  flex: 1;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-`;
-
-const Navigation = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const NavigationLink = styled(NavLink)`
-  margin-bottom: -1px;
-  padding: 1rem 0.5rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #667580;
-  font-weight: bold;
-  font-size: 0.85rem;
-  border-bottom: 3px solid transparent;
-  text-decoration: none;
-
-  &.active {
-    border-color: #1da1f2;
-  }
-
-  &:hover {
-    border-color: #1da1f2;
-    transition: all 0.15s ease-in-out;
-  }
-
-  &:before {
-    background: url(${props => props.img}) no-repeat center center;
-    content: '';
-    width: 20px;
-    height: 20px;
-    margin-right: 0.25rem;
-  }
-`;
-
 const LogoWrapper = styled(Link)`
   display: flex;
   justify-content: center;
@@ -81,87 +29,15 @@ const LogoWrapper = styled(Link)`
   margin: 0 1rem;
 `;
 
-const ActionsList = styled.ul`
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-`;
-
-const Action = styled.li`
-  display: flex;
-  margin: 0.5rem;
-`;
-
-const UserSettingsDropdown = styled.button`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-  background: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  transition: all 0.15s ease-in-out;
-  border-radius: 50%;
-  overflow: hidden;
-
-  &:focus {
-    outline: 0;
-    box-shadow: 0 0 0 2px #ffffff, 0 0 2px 4px rgba(29, 161, 242, 0.4);
-  }
-`;
-
-const UserAvatarImg = styled.img`
-  width: 32px;
-  height: auto;
-`;
-
 export default () => (
   <Header>
     <Grid>
       <Wrapper>
-        <NavigationList>
-          <Navigation>
-            <NavigationLink img={homeIcon} exact to="/">
-              Home
-            </NavigationLink>
-          </Navigation>
-          <Navigation>
-            <NavigationLink img={momentsIcon} exact to="/moments">
-              Moments
-            </NavigationLink>
-          </Navigation>
-          <Navigation>
-            <NavigationLink img={notificationsIcon} exact to="/notifications">
-              Notifications
-            </NavigationLink>
-          </Navigation>
-          <Navigation>
-            <NavigationLink img={messagesIcon} exact to="/messages">
-              Messages
-            </NavigationLink>
-          </Navigation>
-        </NavigationList>
+        <Navigation />
         <LogoWrapper to="/">
           <img src={twitterLogo} alt="twitter logo" />
         </LogoWrapper>
-        <ActionsList>
-          <Action>
-            <Search />
-          </Action>
-          <Action>
-            <UserSettingsDropdown>
-              <UserAvatarImg src={avatar} alt="avatar" />
-            </UserSettingsDropdown>
-          </Action>
-          <Action>
-            <Button>Tweet</Button>
-          </Action>
-        </ActionsList>
+        <Actions />
       </Wrapper>
     </Grid>
   </Header>
