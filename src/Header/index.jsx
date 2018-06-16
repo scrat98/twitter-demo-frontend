@@ -54,9 +54,11 @@ const NavigationLink = styled(NavLink)`
   font-weight: bold;
   font-size: 0.85rem;
   border-bottom: 3px solid transparent;
-  border-color: ${props =>
-    props.activeClassName === 'active' ? '#1da1f2' : 'transparent'};
   text-decoration: none;
+
+  &.active {
+    border-color: #1da1f2;
+  }
 
   &:hover {
     border-color: #1da1f2;
