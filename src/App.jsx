@@ -1,9 +1,23 @@
 import React from 'react';
+import styled from 'styled-components';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import Profile from './Profile';
+import Header from './Header';
 
-const App = () => (
-  <React.Fragment>
-    <h1>Twitter Demo</h1>
-  </React.Fragment>
+const Content = styled.main`
+  padding-top: 3.3rem;
+`;
+
+export default () => (
+  <BrowserRouter>
+    <React.Fragment>
+      <Header />
+      <Content>
+        <Switch>
+          <Redirect exact from="/" to="/EveryInteract" />
+          <Route exact path="/EveryInteract" component={Profile} />
+        </Switch>
+      </Content>
+    </React.Fragment>
+  </BrowserRouter>
 );
-
-export default App;
