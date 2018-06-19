@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Header from './Header';
 import Info from './Info';
 import Tweets from './Tweets';
+import WhoToFollow from '../WhoToFollow';
 
 const MainContentWrapper = styled.div`
   background: #e6ecf0;
@@ -30,6 +31,9 @@ export default () => (
           </Col>
           <Col xs={6}>
             <Tweets />
+          </Col>
+          <Col xs={3}>
+            <WhoToFollow />
           </Col>
         </Row>
       </Grid>
