@@ -7,7 +7,10 @@ import Footer from './Footer';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #e6ecf0;
+  padding: 1rem;
 `;
 
 export default () => (

@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Tweet from '../Tweet';
 
-import avatar from '../Profile/avatar.png';
+import avatar from '../Profile/tmpImg/avatar.png';
 import pinned from '../Tweet/icons/pinned.svg';
-import tweet1 from './tweet1.png';
-import tweet3 from './tweet3.png';
+import tweet1 from './tmpImg/tweet1.png';
+import tweet3 from './tmpImg/tweet3.png';
 
 const TweetsList = styled.ul`
   display: flex;

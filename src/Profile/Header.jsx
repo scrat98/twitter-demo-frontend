@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import Statistics from './Statistics';
 import FollowButton from '../UI/FollowButton';
 
-import background from './background.png';
-import avatar from './avatar.png';
+import background from './tmpImg/background.png';
+import avatar from './tmpImg/avatar.png';
 import moreActionsIcon from './icons/more-actions.svg';
 
 const Background = styled.img`
@@ -76,7 +76,7 @@ export default () => (
           </Col>
           <Col xs={3}>
             <ActionsWrapper>
-              <FollowButton>Follow</FollowButton>
+              <FollowButton />
               <MoreActionsButton>
                 <img src={moreActionsIcon} alt="more actions" />
               </MoreActionsButton>
