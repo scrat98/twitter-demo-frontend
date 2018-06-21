@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 import Header from './Header';
@@ -15,6 +16,9 @@ const MainContentWrapper = styled.div`
 
 export default () => (
   <React.Fragment>
+    <Helmet>
+      <title>EveryInteract (@EveryInteract)</title>
+    </Helmet>
     <Header />
     <MainContentWrapper>
       <Grid>
