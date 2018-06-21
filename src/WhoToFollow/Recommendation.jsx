@@ -20,6 +20,7 @@ const Wrapper = styled.div`
 const Avatar = styled.img`
   position: absolute;
   left: 0;
+  top: 0;
   width: 48px;
   height: 48px;
   border-radius: 50%;
