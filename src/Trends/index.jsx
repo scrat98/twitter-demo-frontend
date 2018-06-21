@@ -33,9 +33,20 @@ const trends = [
   },
 ];
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #e6ecf0;
+  padding: 1rem;
+`;
+
 export default () => (
-  <React.Fragment>
-    <Header />
-    {trends.map(trend => <Trend />)}
-  </React.Fragment>
+  <Wrapper>
+    <Header head="United Kingdom Trends" />
+    {trends.map(trend => (
+      <Trend caption={trend.caption} description={trend.description} />
+    ))}
+  </Wrapper>
 );
