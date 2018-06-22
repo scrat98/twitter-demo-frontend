@@ -8,6 +8,8 @@ import Tweets from './Tweets';
 import Footer from '../Footer';
 import WhoToFollow from '../WhoToFollow';
 import Trends from '../Trends';
+import CommonFollowers from './CommonFollowers';
+import Media from './Media';
 
 const MainContentWrapper = styled.div`
   background: #e6ecf0;
@@ -34,6 +36,8 @@ export default () => (
               ownUrl="https://everyinteraction.com"
               joined="May 2008"
             />
+            <CommonFollowers />
+            <Media />
           </Col>
           <Col xs={6}>
             <Tweets />
