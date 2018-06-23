@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../UI/Button';
 import Search from '../UI/Search';
-import avatar from '../Profile/tmpImg/avatar.png';
+
+const avatar = `${process.env.PUBLIC_URL}/img/avatar.png`;
 
 const List = styled.ul`
   display: flex;

@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
 import followersIcon from './icons/followers.svg';
-import avatar4 from './tmpImg/avatar4.png';
-import avatar5 from './tmpImg/avatar5.png';
-import avatar6 from './tmpImg/avatar6.png';
-import avatar7 from './tmpImg/avatar7.png';
-import avatar8 from './tmpImg/avatar8.png';
-import avatar9 from './tmpImg/avatar9.png';
+
+const avatar4 = `${process.env.PUBLIC_URL}/img/avatar4.png`;
+const avatar5 = `${process.env.PUBLIC_URL}/img/avatar5.png`;
+const avatar6 = `${process.env.PUBLIC_URL}/img/avatar6.png`;
+const avatar7 = `${process.env.PUBLIC_URL}/img/avatar7.png`;
+const avatar8 = `${process.env.PUBLIC_URL}/img/avatar8.png`;
+const avatar9 = `${process.env.PUBLIC_URL}/img/avatar9.png`;
 
 const Wrapper = styled.div`
   display: flex;

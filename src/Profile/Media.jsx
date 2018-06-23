@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
 import mediaIcon from './icons/media.svg';
-import media1 from './tmpImg/media1.png';
-import media2 from './tmpImg/media2.png';
-import media3 from './tmpImg/media3.png';
-import media4 from './tmpImg/media4.png';
-import media5 from './tmpImg/media5.png';
-import media6 from './tmpImg/media6.png';
+
+const media1 = `${process.env.PUBLIC_URL}/img/media1.png`;
+const media2 = `${process.env.PUBLIC_URL}/img/media2.png`;
+const media3 = `${process.env.PUBLIC_URL}/img/media3.png`;
+const media4 = `${process.env.PUBLIC_URL}/img/media4.png`;
+const media5 = `${process.env.PUBLIC_URL}/img/media5.png`;
+const media6 = `${process.env.PUBLIC_URL}/img/media6.png`;
 
 const Wrapper = styled.div`
   display: flex;

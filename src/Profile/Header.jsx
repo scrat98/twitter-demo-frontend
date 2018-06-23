@@ -3,10 +3,10 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 import Statistics from './Statistics';
 import FollowButton from '../UI/FollowButton';
-
-import background from './tmpImg/background.png';
-import avatar from './tmpImg/avatar.png';
 import moreActionsIcon from './icons/more-actions.svg';
+
+const background = `${process.env.PUBLIC_URL}/img/background.png`;
+const avatar = `${process.env.PUBLIC_URL}/img/avatar.png`;
 
 const Background = styled.img`
   display: block;

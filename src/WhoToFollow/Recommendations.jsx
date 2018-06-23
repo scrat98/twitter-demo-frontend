@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Recommendation from './Recommendation';
 
-import avatar1 from '../Profile/tmpImg/avatar1.png';
-import avatar2 from '../Profile/tmpImg/avatar2.png';
-import avatar3 from '../Profile/tmpImg/avatar3.png';
+const avatar1 = `${process.env.PUBLIC_URL}/img/avatar1.png`;
+const avatar2 = `${process.env.PUBLIC_URL}/img/avatar2.png`;
+const avatar3 = `${process.env.PUBLIC_URL}/img/avatar3.png`;
 
 const List = styled.ul`
   display: flex;
