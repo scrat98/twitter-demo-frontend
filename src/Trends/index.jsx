@@ -9,27 +9,28 @@ const trends = [
   },
   {
     caption: '#FridayFeeling',
-    description: '12.1K Tweets',
+    tweets: '12100',
   },
   {
     caption: '#FridayFeeling',
-    description: '12.1K Tweets',
+    tweets: '12100',
   },
   {
     caption: '#BrexitAnniversary',
     description: 'It’s one year since the UK voted to leave the European Union',
+    tweets: '56700',
   },
   {
     caption: 'HMS Queen Elizabeth',
-    description: '1,036 Tweets',
+    tweets: '1036',
   },
   {
     caption: 'Joe Budden',
-    description: '1,036 Tweets',
+    tweets: '1036',
   },
   {
     caption: 'Trident',
-    description: '6,136 Tweets',
+    tweets: '6136',
   },
 ];
 
@@ -46,7 +47,11 @@ export default () => (
   <Wrapper>
     <Header head="United Kingdom Trends" />
     {trends.map(trend => (
-      <Trend caption={trend.caption} description={trend.description} />
+      <Trend
+        caption={trend.caption}
+        description={trend.description}
+        tweets={trend.tweets}
+      />
     ))}
   </Wrapper>
 );
