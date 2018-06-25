@@ -2,11 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Tweet from '../Tweet';
-
-import avatar from '../Profile/avatar.png';
 import pinned from '../Tweet/icons/pinned.svg';
-import tweet1 from './tweet1.png';
-import tweet3 from './tweet3.png';
+
+const avatar = `${process.env.PUBLIC_URL}/img/avatar.png`;
+const tweet1 = `${process.env.PUBLIC_URL}/img/tweet1.png`;
+const tweet3 = `${process.env.PUBLIC_URL}/img/tweet3.png`;
 
 const TweetsList = styled.ul`
   display: flex;

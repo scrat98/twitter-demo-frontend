@@ -10,6 +10,7 @@ import locationIcon from './icons/location.svg';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
 `;
 
 const Name = styled.h1`
