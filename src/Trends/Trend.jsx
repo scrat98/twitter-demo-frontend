@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import numbro from 'numbro';
 import { Link } from 'react-router-dom';
+import { getFormattedTweets } from '../utils';
 
 const Caption = styled.h3`
   margin: 0;
@@ -36,42 +36,14 @@ const TrendLink = styled(Link)`
   }
 `;
 
-class Trend extends React.Component {
-  getFormattedTweets(tweets) {
-    const shortNumberFormat = {
-      thousandSeparated: true,
-    };
+export default ({ caption, description, tweets }) => {
+  const formattedTweets = getFormattedTweets(tweets);
 
-    const longNumberFormat = {
-      average: true,
-      thousandSeparated: true,
-      mantissa: 1,
-      trimMantissa: true,
-    };
-
-    if (tweets < 10000) {
-      return numbro(tweets)
-        .format(shortNumberFormat)
-        .toUpperCase();
-    }
-
-    return numbro(tweets)
-      .format(longNumberFormat)
-      .toUpperCase();
-  }
-
-  render() {
-    const { caption, description, tweets } = this.props;
-    const formattedTweets = this.getFormattedTweets(tweets);
-
-    return (
-      <TrendLink to={`/search?q=${caption}`}>
-        <Caption>{caption}</Caption>
-        {description && <Description>{description}</Description>}
-        {tweets && <Tweets>{formattedTweets} Tweets</Tweets>}
-      </TrendLink>
-    );
-  }
-}
-
-export default Trend;
+  return (
+    <TrendLink to={`/search?q=${caption}`}>
+      <Caption>{caption}</Caption>
+      {description && <Description>{description}</Description>}
+      {tweets && <Tweets>{formattedTweets} Tweets</Tweets>}
+    </TrendLink>
+  );
+};
