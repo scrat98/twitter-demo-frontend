@@ -1,11 +1,17 @@
 {
+  "parser": "babel-eslint",
   "extends": ["airbnb", "prettier/react"],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "react"],
   "env": {
     "browser": true
   },
   "rules": {
     "react/jsx-filename-extension": [0, { "extensions": [".js"] }],
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "react/prop-types": 0,
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      { "components": ["Link"], "specialLink": ["to"] }
+    ]
   }
 }
