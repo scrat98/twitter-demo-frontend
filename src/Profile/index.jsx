@@ -45,7 +45,9 @@ export default ({ match }) => {
               <Route
                 exact
                 path={`/${userId}`}
-                render={props => <Tweets {...props} tweetsData={tweets} />}
+                render={props => (
+                  <Tweets {...props} userId={userId} tweetsData={tweets} />
+                )}
               />
               <Route
                 exact
