@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
@@ -11,44 +12,70 @@ import Trends from '../Trends';
 import CommonFollowers from './CommonFollowers';
 import Media from './Media';
 
+import users from '../data/users';
+import commonFollowers from '../data/commonFollowers';
+import media from '../data/media';
+import tweets from '../data/tweets';
+import suggestedUsers from '../data/suggestedUsers';
+import trends from '../data/trends';
+
 const MainContentWrapper = styled.div`
   background: #e6ecf0;
   padding-top: 0.5rem;
 `;
 
-export default () => (
-  <React.Fragment>
-    <Helmet>
-      <title>EveryInteract (@EveryInteract)</title>
-    </Helmet>
-    <Header />
-    <MainContentWrapper>
-      <Grid>
-        <Row>
-          <Col xs={3}>
-            <Info
-              name="Every Interaction"
-              official
-              nickName="EveryInteraction"
-              followed
-              about="UX Design studio focussed problem solving creativity. Design to us is how can we make things *work* amazing."
-              location="London, UK"
-              ownUrl="https://everyinteraction.com"
-              joined="May 2008"
-            />
-            <CommonFollowers />
-            <Media />
-          </Col>
-          <Col xs={6}>
-            <Tweets />
-          </Col>
-          <Col xs={3}>
-            <WhoToFollow />
-            <Trends />
-            <Footer />
-          </Col>
-        </Row>
-      </Grid>
-    </MainContentWrapper>
-  </React.Fragment>
-);
+export default ({ match }) => {
+  const { userId } = match.params;
+  const userInfo = users.filter(user => user.id === userId)[0];
+  return (
+    <React.Fragment>
+      <Helmet>
+        <title>{`${userInfo.name} (@${userInfo.id})`}</title>
+      </Helmet>
+      <Header {...userInfo} />
+      <MainContentWrapper>
+        <Grid>
+          <Row>
+            <Col xs={3}>
+              <Info {...userInfo} />
+              <CommonFollowers userId={userId} data={commonFollowers} />
+              <Media userId={userId} data={media} />
+            </Col>
+            <Col xs={6}>
+              <Route
+                exact
+                path={`/${userId}`}
+                render={props => <Tweets {...props} tweetsData={tweets} />}
+              />
+              <Route
+                exact
+                path={`/${userId}/following`}
+                render={() => <h1>Following</h1>}
+              />
+              <Route
+                exact
+                path={`/${userId}/followers`}
+                render={() => <h1>Followers</h1>}
+              />
+              <Route
+                exact
+                path={`/${userId}/likes`}
+                render={() => <h1>Likes</h1>}
+              />
+              <Route
+                exact
+                path={`/${userId}/lists`}
+                render={() => <h1>Lists</h1>}
+              />
+            </Col>
+            <Col xs={3}>
+              <WhoToFollow data={suggestedUsers} />
+              <Trends data={trends} header="United Kingdom Trends" />
+              <Footer />
+            </Col>
+          </Row>
+        </Grid>
+      </MainContentWrapper>
+    </React.Fragment>
+  );
+};

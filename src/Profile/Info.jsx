@@ -104,7 +104,7 @@ const Actions = styled.div`
 export default ({
   name,
   official,
-  nickName,
+  id,
   followed,
   about,
   location,
@@ -114,12 +114,14 @@ export default ({
   <Wrapper>
     <Name official={official}>{name}</Name>
     <NickName>
-      <span>@{nickName}</span>
+      <span>@{id}</span>
       {followed && <Followed>Follows you</Followed>}
     </NickName>
-    <About>{about}</About>
-    <Location>{location}</Location>
-    <OwnUrl href={ownUrl}>{ownUrl.replace(/(^\w+:|^)\/\//, '')}</OwnUrl>
+    {about && <About>{about}</About>}
+    {location && <Location>{location}</Location>}
+    {ownUrl && (
+      <OwnUrl href={ownUrl}>{ownUrl.replace(/(^\w+:|^)\/\//, '')}</OwnUrl>
+    )}
     <Joined>Joined {joined}</Joined>
     <Actions>
       <Button>Tweet to</Button>
