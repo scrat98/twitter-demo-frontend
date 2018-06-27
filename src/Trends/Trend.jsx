@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import queryString from 'query-string';
+// import queryString from 'query-string';
 import { Link } from 'react-router-dom';
 import { getFormattedTweets } from '../utils';
 
@@ -39,13 +39,13 @@ const TrendLink = styled(Link)`
 
 export default ({ caption, description, tweets }) => {
   const formattedTweets = getFormattedTweets(tweets);
-  const searchParams = {
-    q: caption,
-  };
-  const searchQuery = queryString.stringify(searchParams);
+  // const searchParams = {
+  //   q: caption,
+  // };
+  // const searchQuery = queryString.stringify(searchParams);
 
   return (
-    <TrendLink to={`/search?${searchQuery}`}>
+    <TrendLink to={`/search?q=${caption}`}>
       <Caption>{caption}</Caption>
       {description && <Description>{description}</Description>}
       {tweets && <Tweets>{formattedTweets} Tweets</Tweets>}
