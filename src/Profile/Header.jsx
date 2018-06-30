@@ -57,7 +57,7 @@ const MoreActionsButton = styled.button`
   margin-left: 1rem;
 `;
 
-export default ({ id, avatar, background }) => (
+export default ({ userId, avatar, background }) => (
   <React.Fragment>
     <Background src={background} alt="Profile Background" />
     <Navigation>
@@ -69,7 +69,7 @@ export default ({ id, avatar, background }) => (
             </AvatarWrapper>
           </Col>
           <Col xs={6}>
-            <Statistics userId={id} />
+            <Statistics userId={userId} />
           </Col>
           <Col xs={3}>
             <ActionsWrapper>

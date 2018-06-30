@@ -1,7 +1,10 @@
-import pinned from './img/tweets/pinned.svg';
-import avatar from './img/users/EveryInteract/avatar.png';
-import tweet1 from './img/tweets/tweet1.png';
-import tweet3 from './img/tweets/tweet3.png';
+const tweetsContentPath = `${process.env.PUBLIC_URL}/img/tweets`;
+const userContentPath = `${process.env.PUBLIC_URL}/img/users`;
+
+const pinned = `${tweetsContentPath}/pinned.svg`;
+const avatar = `${userContentPath}/EveryInteract/avatar.png`;
+const tweet1 = `${tweetsContentPath}/tweet1.png`;
+const tweet3 = `${tweetsContentPath}/tweet3.png`;
 
 export default [
   {
@@ -24,7 +27,7 @@ export default [
     userAvatar: avatar,
     time: '23h',
     text:
-      'Our new website concept; Taking you from… @ Every Interaction instagram.com/p/BNFGrfhBP3M/',
+      'Our new website concept; Taking you =… @ Every Interaction instagram.com/p/BNFGrfhBP3M/',
     replies: 1,
     retweets: 4,
     likes: 2,

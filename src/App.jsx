@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Profile from './Profile';
 import Header from './Header';
+import Page404 from './Page404';
 
 const Content = styled.main`
   padding-top: 3.3rem;
@@ -15,18 +16,6 @@ const Stub = ({ location }) => (
       <title>{location.pathname}</title>
     </Helmet>
     <h1>This is {`${location.pathname}${location.search}`}</h1>
-  </React.Fragment>
-);
-
-const ErrorPage = ({ location }) => (
-  <React.Fragment>
-    <Helmet>
-      <title>Error 404</title>
-    </Helmet>
-    <h1>
-      Error occurred during load the page{' '}
-      {`${location.pathname}${location.search}`}
-    </h1>
   </React.Fragment>
 );
 
@@ -46,9 +35,11 @@ export default () => (
           <Route exact path="/privacy" component={Stub} />
           <Route exact path="/cookies" component={Stub} />
           <Route exact path="/advertisement" component={Stub} />
+          <Route exact path="/who_to_follow/suggestions" component={Stub} />
+          <Route exact path="/who_to_follow/import" component={Stub} />
           <Route exact path="/search" component={Stub} />
           <Route path="/:userId" component={Profile} />
-          <Route component={ErrorPage} />
+          <Route component={Page404} />
         </Switch>
       </Content>
     </React.Fragment>

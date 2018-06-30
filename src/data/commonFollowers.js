@@ -1,9 +1,11 @@
-import follower1 from './img/commonFollowers/follower1.png';
-import follower2 from './img/commonFollowers/follower2.png';
-import follower3 from './img/commonFollowers/follower3.png';
-import follower4 from './img/commonFollowers/follower4.png';
-import follower5 from './img/commonFollowers/follower5.png';
-import follower6 from './img/commonFollowers/follower6.png';
+const followersContentPath = `${process.env.PUBLIC_URL}/img/commonFollowers`;
+
+const follower1 = `${followersContentPath}/follower1.png`;
+const follower2 = `${followersContentPath}/follower2.png`;
+const follower3 = `${followersContentPath}/follower3.png`;
+const follower4 = `${followersContentPath}/follower4.png`;
+const follower5 = `${followersContentPath}/follower5.png`;
+const follower6 = `${followersContentPath}/follower6.png`;
 
 export default [
   follower1,

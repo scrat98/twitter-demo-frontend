@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import Tweets from '../Tweets';
 
 const NavigationList = styled.ul`
   display: flex;
@@ -43,25 +42,22 @@ const NavigationLink = styled(NavLink)`
   }
 `;
 
-export default ({ userId, tweetsData }) => (
-  <React.Fragment>
-    <NavigationList>
-      <Navigation>
-        <NavigationLink exact to={`/${userId}`}>
-          Tweets
-        </NavigationLink>
-      </Navigation>
-      <Navigation>
-        <NavigationLink exact to={`/${userId}/with_replies`}>
-          Tweets & replies
-        </NavigationLink>
-      </Navigation>
-      <Navigation>
-        <NavigationLink exact to={`/${userId}/media`}>
-          Media
-        </NavigationLink>
-      </Navigation>
-    </NavigationList>
-    <Tweets data={tweetsData} />
-  </React.Fragment>
+export default ({ userId }) => (
+  <NavigationList>
+    <Navigation>
+      <NavigationLink exact to={`/${userId}`}>
+        Tweets
+      </NavigationLink>
+    </Navigation>
+    <Navigation>
+      <NavigationLink exact to={`/${userId}/with_replies`}>
+        Tweets & replies
+      </NavigationLink>
+    </Navigation>
+    <Navigation>
+      <NavigationLink exact to={`/${userId}/media`}>
+        Media
+      </NavigationLink>
+    </Navigation>
+  </NavigationList>
 );

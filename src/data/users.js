@@ -1,11 +1,13 @@
-import EveryInteractAvatar from './img/users/EveryInteract/avatar.png';
-import EveryInteractBackground from './img/users/EveryInteract/background.jpg';
-import sfchronicleAvatar from './img/users/sfchronicle/avatar.jpg';
-import sfchronicleBackground from './img/users/sfchronicle/background.jpg';
-import GFXAlertAvatar from './img/users/GFX_Alert/avatar.png';
-import GFXAlertBackground from './img/users/GFX_Alert/background.png';
-import mohanbelaniAvatar from './img/users/mohanbelani/avatar.jpg';
-import mohanbelaniBackground from './img/users/mohanbelani/background.jpg';
+const userContentPath = `${process.env.PUBLIC_URL}/img/users`;
+
+const EveryInteractAvatar = `${userContentPath}/EveryInteract/avatar.png`;
+const EveryInteractBackground = `${userContentPath}/EveryInteract/background.jpg`;
+const sfchronicleAvatar = `${userContentPath}/sfchronicle/avatar.jpg`;
+const sfchronicleBackground = `${userContentPath}/sfchronicle/background.jpg`;
+const GFXAlertAvatar = `${userContentPath}/GFX_Alert/avatar.png`;
+const GFXAlertBackground = `${userContentPath}/GFX_Alert/background.png`;
+const mohanbelaniAvatar = `${userContentPath}/mohanbelani/avatar.jpg`;
+const mohanbelaniBackground = `${userContentPath}/mohanbelani/background.jpg`;
 
 export default [
   {

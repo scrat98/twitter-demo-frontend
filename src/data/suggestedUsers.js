@@ -1,6 +1,8 @@
-import sfchronicleAvatar from './img/users/sfchronicle/avatar.jpg';
-import GFXAlertAvatar from './img/users/GFX_Alert/avatar.png';
-import mohanbelaniAvatar from './img/users/mohanbelani/avatar.jpg';
+const userContentPath = `${process.env.PUBLIC_URL}/img/users`;
+
+const sfchronicleAvatar = `${userContentPath}/sfchronicle/avatar.jpg`;
+const GFXAlertAvatar = `${userContentPath}/GFX_Alert/avatar.png`;
+const mohanbelaniAvatar = `${userContentPath}/mohanbelani/avatar.jpg`;
 
 export default [
   {
