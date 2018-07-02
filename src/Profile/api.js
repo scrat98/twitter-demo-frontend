@@ -7,6 +7,10 @@ import tweets from '../data/tweets';
 import suggestedUsers from '../data/suggestedUsers';
 import trends from '../data/trends';
 
+const apiUrl = 'https://twitter-demo.erodionov.ru/api/v1';
+const token = process.env.REACT_APP_ACCESS_TOKEN;
+console.log(apiUrl, token);
+
 export function isUserExist(userId) {
   return !(users.find(user => user.id === userId) === undefined);
 }
