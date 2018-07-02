@@ -1,6 +1,7 @@
 /* eslint import/prefer-default-export: 0 */
 
 import numbro from 'numbro';
+import { matchPath } from 'react-router-dom';
 
 export function getFormattedTweets(tweets) {
   const shortNumberFormat = {
@@ -23,4 +24,8 @@ export function getFormattedTweets(tweets) {
   return numbro(tweets)
     .format(longNumberFormat)
     .toUpperCase();
+}
+
+export function computeMatch(pathname, { path, strict, exact, sensitive }) {
+  return !!matchPath(pathname, { path, strict, exact, sensitive });
 }

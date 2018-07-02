@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { computeMatch } from '../utils';
 
 const List = styled.ul`
   display: flex;
@@ -54,7 +55,16 @@ const Value = styled.span`
 export default ({ userId }) => (
   <List>
     <Statistic>
-      <Link exact to={`/${userId}`}>
+      <Link
+        exact
+        to={`/${userId}`}
+        isActive={(match, location) =>
+          computeMatch(location.pathname, {
+            path: `/${userId}/(tweets|with_replies|media)?`,
+            exact: true,
+          })
+        }
+      >
         <Name>Tweets</Name>
         <Value>8,058</Value>
       </Link>
