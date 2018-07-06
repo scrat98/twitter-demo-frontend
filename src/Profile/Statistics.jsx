@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { computeMatch } from '../utils';
+import { computeMatch, getFormattedNumber } from '../utils';
 
 const List = styled.ul`
   display: flex;
@@ -52,7 +52,7 @@ const Value = styled.span`
   font-weight: bold;
 `;
 
-export default ({ userId }) => (
+export default ({ userId, tweets, followers, following, likes, lists }) => (
   <List>
     <Statistic>
       <Link
@@ -66,31 +66,31 @@ export default ({ userId }) => (
         }
       >
         <Name>Tweets</Name>
-        <Value>8,058</Value>
+        <Value>{getFormattedNumber(tweets)}</Value>
       </Link>
     </Statistic>
     <Statistic>
       <Link exact to={`/${userId}/following`}>
         <Name>Following</Name>
-        <Value>721</Value>
+        <Value>{getFormattedNumber(following)}</Value>
       </Link>
     </Statistic>
     <Statistic>
       <Link exact to={`/${userId}/followers`}>
         <Name>Followers</Name>
-        <Value>1,815</Value>
+        <Value>{getFormattedNumber(followers)}</Value>
       </Link>
     </Statistic>
     <Statistic>
       <Link exact to={`/${userId}/likes`}>
         <Name>Likes</Name>
-        <Value>460</Value>
+        <Value>{getFormattedNumber(likes)}</Value>
       </Link>
     </Statistic>
     <Statistic>
       <Link exact to={`/${userId}/lists`}>
         <Name>Lists</Name>
-        <Value>2</Value>
+        <Value>{getFormattedNumber(lists)}</Value>
       </Link>
     </Statistic>
   </List>
