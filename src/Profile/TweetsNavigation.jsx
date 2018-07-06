@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { computeMatch } from '../utils';
 
-const NavigationList = styled.ul`
+const List = styled.ul`
   display: flex;
   padding: 0 1rem;
   border-bottom: 1px solid #e6ecf0;
@@ -19,7 +19,7 @@ const Navigation = styled.li`
   margin: 0 0.5rem;
 `;
 
-const NavigationLink = styled(NavLink)`
+const Link = styled(NavLink)`
   padding: 0.8rem 0;
   cursor: pointer;
   display: flex;
@@ -44,9 +44,9 @@ const NavigationLink = styled(NavLink)`
 `;
 
 export default ({ userId }) => (
-  <NavigationList>
+  <List>
     <Navigation>
-      <NavigationLink
+      <Link
         exact
         to={`/${userId}`}
         isActive={(match, location) =>
@@ -57,17 +57,17 @@ export default ({ userId }) => (
         }
       >
         Tweets
-      </NavigationLink>
+      </Link>
     </Navigation>
     <Navigation>
-      <NavigationLink exact to={`/${userId}/with_replies`}>
+      <Link exact to={`/${userId}/with_replies`}>
         Tweets & replies
-      </NavigationLink>
+      </Link>
     </Navigation>
     <Navigation>
-      <NavigationLink exact to={`/${userId}/media`}>
+      <Link exact to={`/${userId}/media`}>
         Media
-      </NavigationLink>
+      </Link>
     </Navigation>
-  </NavigationList>
+  </List>
 );
