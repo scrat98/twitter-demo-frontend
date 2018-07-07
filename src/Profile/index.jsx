@@ -19,6 +19,8 @@ import {
   getUserInfoById,
   getUserMediaPreview,
   getUserTweets,
+  getUserTweetsWithReplies,
+  getUserTweetsWithMedia,
   getUserFollowers,
   getUserFollowing,
   getSuggestedUsers,
@@ -59,6 +61,8 @@ export default class Profile extends React.Component {
       getUserInfoById(userId),
       getUserMediaPreview(userId),
       getUserTweets(userId),
+      getUserTweetsWithReplies(userId),
+      getUserTweetsWithMedia(userId),
       getUserFollowers(userId),
       getUserFollowing(userId),
       getCommonFollowers(userId),
@@ -66,18 +70,31 @@ export default class Profile extends React.Component {
       getTrends(),
     ])
       .then(data => {
-        const profileData = {
-          userInfo: data[0],
-          media: data[1],
-          tweets: data[2],
-          userFollowers: data[3],
-          userFollowing: data[4],
-          commonFollowers: data[5],
-          suggestedUsers: data[6],
-          trends: data[7],
-        };
+        const [
+          userInfo,
+          media,
+          tweets,
+          tweetsWithReplies,
+          tweetsWithMedia,
+          userFollowers,
+          userFollowing,
+          commonFollowers,
+          suggestedUsers,
+          trends,
+        ] = data;
         this.setState({
-          profileData,
+          profileData: {
+            userInfo,
+            media,
+            tweets,
+            tweetsWithReplies,
+            tweetsWithMedia,
+            userFollowers,
+            userFollowing,
+            commonFollowers,
+            suggestedUsers,
+            trends,
+          },
           status: 200,
           loading: false,
         });
@@ -102,6 +119,8 @@ export default class Profile extends React.Component {
       commonFollowers,
       media,
       tweets,
+      tweetsWithReplies,
+      tweetsWithMedia,
       suggestedUsers,
       trends,
     } = this.state.profileData;
@@ -153,12 +172,12 @@ export default class Profile extends React.Component {
                         <Route
                           exact
                           path={`/${userInfo.id}/with_replies`}
-                          render={() => <h1>With replies</h1>}
+                          render={() => <Tweets data={tweetsWithReplies} />}
                         />
                         <Route
                           exact
                           path={`/${userInfo.id}/media`}
-                          render={() => <h1>Media</h1>}
+                          render={() => <Tweets data={tweetsWithMedia} />}
                         />
                       </Switch>
                     </React.Fragment>

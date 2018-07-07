@@ -74,7 +74,67 @@ export function getUserFollowing(userId) {
 }
 
 export function getUserTweets(userId) {
+  return fetch(
+    `${apiUrl}/accounts/${userId}/statuses?exclude_replies=yes&access_token=${token}`,
+  )
+    .then(response => {
+      if (!response.ok) {
+        throw response.status;
+      }
+
+      return response.json();
+    })
+    .then(tweets =>
+      tweets.map(tweet => ({
+        id: tweet.id,
+        content: tweet.content,
+        time: tweet.created_at,
+        replies: tweet.mentions.left,
+        retweets: tweet.reblogs_count,
+        likes: tweet.favourites_count,
+        userFullName: tweet.account.display_name,
+        userNickName: tweet.account.username,
+        userAvatar: tweet.account.avatar_static,
+        username: tweet.account.username,
+        userId: tweet.account.id,
+        media: tweet.media_attachments,
+        pinned: tweet.pinned,
+      })),
+    );
+}
+
+export function getUserTweetsWithReplies(userId) {
   return fetch(`${apiUrl}/accounts/${userId}/statuses?access_token=${token}`)
+    .then(response => {
+      if (!response.ok) {
+        throw response.status;
+      }
+
+      return response.json();
+    })
+    .then(tweets =>
+      tweets.map(tweet => ({
+        id: tweet.id,
+        content: tweet.content,
+        time: tweet.created_at,
+        replies: tweet.mentions.left,
+        retweets: tweet.reblogs_count,
+        likes: tweet.favourites_count,
+        userFullName: tweet.account.display_name,
+        userNickName: tweet.account.username,
+        userAvatar: tweet.account.avatar_static,
+        username: tweet.account.username,
+        userId: tweet.account.id,
+        media: tweet.media_attachments,
+        pinned: tweet.pinned,
+      })),
+    );
+}
+
+export function getUserTweetsWithMedia(userId) {
+  return fetch(
+    `${apiUrl}/accounts/${userId}/statuses?only_media=yes&access_token=${token}`,
+  )
     .then(response => {
       if (!response.ok) {
         throw response.status;

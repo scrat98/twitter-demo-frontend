@@ -49,11 +49,6 @@ const About = styled.p`
   margin: 1rem 0;
   font-size: 1rem;
   color: #14171a;
-
-  & > * {
-    margin: 0;
-    padding: 0;
-  }
 `;
 
 const Location = styled.span`
