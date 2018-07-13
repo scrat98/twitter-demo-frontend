@@ -4,7 +4,7 @@ node_js:
 cache:
   directories:
     - "node_modules"
-script: npm build
+script: npm run build
 before_deploy: npm -g install now --no-save
 deploy:
   - provider: script
