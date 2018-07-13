@@ -8,7 +8,7 @@ script: npm test
 before_deploy: npm -g install now --no-save
 deploy:
   - provider: script
-    script: now --token $NOW_TOKEN && now alias --token $NOW_TOKEN
+    script: now --token $NOW_TOKEN --public && now alias --token $NOW_TOKEN --public
     skip_cleanup: true
     on:
       all_branches: true
