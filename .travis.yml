@@ -1,4 +1,14 @@
 language: node_js
 node_js:
-  - "iojs"
-  - "7"
+  - "node"
+cache:
+  directories:
+    - "node_modules"
+script: npm test
+before_deploy: npm -g install now --no-save
+deploy:
+  - provider: script
+    script: now --token $NOW_TOKEN && now alias --token $NOW_TOKEN
+    skip_cleanup: true
+    on:
+      all_branches: true
