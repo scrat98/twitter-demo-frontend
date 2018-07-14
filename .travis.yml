@@ -6,10 +6,10 @@ cache:
   directories:
     - "node_modules"
 script: yarn build
-before_deploy: npm -g install now --no-save
+before_deploy: npm -g install now
 deploy:
   - provider: script
-    script: now --public --token $NOW_TOKEN ./build
+    script: now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build && now alias twitter-demo-frontend.now.sh
     skip_cleanup: true
     on:
       all_branches: true
