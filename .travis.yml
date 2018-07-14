@@ -1,14 +1,21 @@
 language: node_js
 node_js:
   - "node"
+
 branches:
   only:
     - master
     - /^feat\/.*$/
+
+env:
+  global:
+    - NOW_BRANCH_NAME="${TRAVIS_BRANCH//\//-}"
+
 cache:
   yarn: true
   directories:
     - "node_modules"
+
 script: yarn build
 before_deploy: npm -g install now
 deploy:
@@ -19,10 +26,7 @@ deploy:
     skip_cleanup: true
     on: master
   - provider: script
-    script:
-      - export FEAT_NAME="${TRAVIS_BRANCH//\//-}"
-      - echo $FEAT_NAME
-      - now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build && now alias twitter-demo-frontend-scrat98-$FEAT_NAME.now.sh --token $NOW_TOKEN
+    script: now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build && now alias twitter-demo-frontend-scrat98-$NOW_BRANCH_NAME.now.sh --token $NOW_TOKEN
     skip_cleanup: true
     on:
       all_branches: true
