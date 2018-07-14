@@ -5,10 +5,11 @@ cache:
   yarn: true
   directories:
     - "node_modules"
-before_deploy: yarn add now
+scipt: yarn build
+before_deploy: npm -g install now --no-save
 deploy:
   - provider: script
-    script: now --public --token $NOW_TOKEN && now alias --token $NOW_TOKEN
+    script: now --public --token $NOW_TOKEN ./build
     skip_cleanup: true
     on:
       all_branches: true

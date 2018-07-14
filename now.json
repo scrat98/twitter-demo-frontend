@@ -1,5 +1,0 @@
-{
-  "name": "twitter-demo-frontend",
-  "alias": "twitter-demo-frontend.now.sh",
-  "files": ["package.json", "yarn.lock"]
-}
