@@ -1,7 +1,7 @@
 branches:
   only:
     - master
-    - feat/TravisCI
+    - /^feat\/.*$/
 language: node_js
 node_js:
   - "node"
@@ -15,3 +15,10 @@ deploy:
   - provider: script
     script: now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build && now alias twitter-demo-frontend-scrat98.now.sh --token $NOW_TOKEN
     skip_cleanup: true
+    on: master
+  - provider: script
+    script: now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build && now alias twitter-demo-frontend-scrat98-$TRAVIS_BRANCH.now.sh --token $NOW_TOKEN
+    skip_cleanup: true
+    on:
+      all_branches: true
+      condition: $TRAVIS_BRANCH =~ ^feat\/.*$
