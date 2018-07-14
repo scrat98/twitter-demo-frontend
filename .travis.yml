@@ -22,7 +22,7 @@ deploy:
     skip_cleanup: true
     on: master
   - provider: script
-    script: now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build && now alias asfa-scrat98-${TRAVIS_BRANCH//\//-}.now.sh --token $NOW_TOKEN
+    script: echo $TRAVIS_BRANCH
     skip_cleanup: true
     on:
       all_branches: true
