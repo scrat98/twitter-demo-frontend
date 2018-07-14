@@ -8,7 +8,7 @@ script: npm run build
 before_deploy: npm -g install now --no-save
 deploy:
   - provider: script
-    script: now alias --token $NOW_TOKEN --public ./build
+    script: now --public --token $NOW_TOKEN ./build && now alias --token $NOW_TOKEN
     skip_cleanup: true
     on:
       all_branches: true
