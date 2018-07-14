@@ -9,7 +9,7 @@ script: yarn build
 before_deploy: npm -g install now
 deploy:
   - provider: script
-    script: now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build && now alias twitter-demo-frontend.now.sh
+    script: now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build && now alias twitter-demo-frontend.now.sh --token $NOW_TOKEN
     skip_cleanup: true
     on:
       all_branches: true
