@@ -9,16 +9,24 @@ cache:
   yarn: true
   directories:
     - "node_modules"
-before_script: echo $TRAVIS_BRANCH
+before_script:
+  - echo "Deploying $TRAVIS_BRANCH branch"
+  - |
+    TRAVIS_CORRECT_BRANSH=$TRAVIS_BRANCH
+    echo $TRAVIS_CORRECT_BRANSH
 script: yarn build
 before_deploy: npm -g install now
 deploy:
   - provider: script
-    script: now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build && now alias twitter-demo-frontend-scrat98.now.sh --token $NOW_TOKEN
+    script: >
+      now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build &&
+      now alias twitter-demo-frontend-scrat98.now.sh --token $NOW_TOKEN
     skip_cleanup: true
     on: master
   - provider: script
-    script: now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build && now alias twitter-demo-frontend-scrat98-$TRAVIS_BRANCH.now.sh --token $NOW_TOKEN
+    script: >
+      now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build &&
+      now alias twitter-demo-frontend-scrat98-$TRAVIS_BRANCH.now.sh --token $NOW_TOKEN
     skip_cleanup: true
     on:
       all_branches: true
