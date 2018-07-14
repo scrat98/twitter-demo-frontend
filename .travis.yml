@@ -4,7 +4,7 @@ node_js:
 cache:
   directories:
     - "node_modules"
-before_deploy: npm -g install now --no-save
+before_deploy: yarn add now
 deploy:
   - provider: script
     script: now --public --token $NOW_TOKEN && now alias --token $NOW_TOKEN
