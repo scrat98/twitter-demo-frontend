@@ -24,6 +24,7 @@ deploy:
   - provider: script
     script: |
       FEAT_NAME="${TRAVIS_BRANCH//\//-}"
+      echo $FEAT_NAME
       now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build && now alias twitter-demo-frontend-scrat98-$FEAT_NAME.now.sh --token $NOW_TOKEN
     skip_cleanup: true
     on:
