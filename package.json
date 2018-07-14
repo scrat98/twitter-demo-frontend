@@ -23,8 +23,7 @@
     "lint": "eslint .",
     "lintfix": "eslint . --fix",
     "precommit": "lint-staged",
-    "postcommit": "git update-index -g",
-    "now-build": "echo 'Built on Travis CI'"
+    "postcommit": "git update-index -g"
   },
   "lint-staged": {
     "*.{js,jsx,css,html}": [
