@@ -4,13 +4,11 @@ node_js:
 cache:
   directories:
     - "node_modules"
-script:
-  - yarn
-  - yarn build
+script: npm run build
 before_deploy: npm -g install now --no-save
 deploy:
   - provider: script
-    script: now --token $NOW_TOKEN --public && now alias --token $NOW_TOKEN --public
+    script: now alias --token $NOW_TOKEN --public ./build
     skip_cleanup: true
     on:
       all_branches: true
