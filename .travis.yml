@@ -5,7 +5,7 @@ cache:
   yarn: true
   directories:
     - "node_modules"
-scipt: yarn build
+script: yarn build
 before_deploy: npm -g install now --no-save
 deploy:
   - provider: script
