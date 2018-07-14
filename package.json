@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "date-fns": "^1.29.0",
+    "flow-typed": "^2.5.1",
     "lodash": "^4.17.10",
     "normalize.css": "^8.0.0",
     "numbro": "^2.1.0",
@@ -16,13 +17,13 @@
     "styled-components": "^3.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "start": "flow check && react-scripts start",
+    "build": "flow check && react-scripts build",
+    "test": "flow check && react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lintfix": "eslint . --fix",
-    "precommit": "lint-staged",
+    "precommit": "flow check && lint-staged",
     "postcommit": "git update-index -g"
   },
   "lint-staged": {
@@ -40,6 +41,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.9.1",
+    "flow-bin": "^0.76.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.0",
     "prettier": "^1.13.5"

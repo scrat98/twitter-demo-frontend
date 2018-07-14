@@ -1,6 +1,8 @@
+// @flow
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import type { ContextRouter } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 import Header from './Header';
@@ -26,16 +28,47 @@ import {
   getSuggestedUsers,
   getTrends,
 } from './api';
+import type {
+  UserInfo,
+  MediaPreview,
+  FollowerInfo,
+  Tweet,
+  Trend,
+} from './types';
 
 const MainContentWrapper = styled.div`
   background: #e6ecf0;
   padding-top: 0.5rem;
 `;
 
-export default class Profile extends React.Component {
+export type ProfileData = {
+  userInfo: UserInfo,
+  media: MediaPreview[],
+  tweets: Tweet[],
+  tweetsWithReplies: Tweet[],
+  tweetsWithMedia: Tweet[],
+  userFollowers: FollowerInfo[],
+  userFollowing: FollowerInfo[],
+  commonFollowers: FollowerInfo[],
+  suggestedUsers: FollowerInfo[],
+  trends: Trend[],
+};
+
+export type ProfileState = {
+  profileData: ProfileData | null,
+  status: number,
+  loading: boolean,
+};
+
+export type ProfileProps = ContextRouter;
+
+export default class Profile extends React.Component<
+  ProfileProps,
+  ProfileState,
+> {
   state = {
     profileData: null,
-    status: undefined,
+    status: 200,
     loading: true,
   };
 
@@ -44,7 +77,7 @@ export default class Profile extends React.Component {
     this.loadAsyncProfileData(userId);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: ProfileProps) {
     const { userId } = this.props.match.params;
     const { userId: prevUserId } = prevProps.match.params;
     if (userId !== prevUserId) {
@@ -52,7 +85,7 @@ export default class Profile extends React.Component {
     }
   }
 
-  loadAsyncProfileData(userId) {
+  loadAsyncProfileData(userId: any) {
     this.setState({
       loading: true,
     });
@@ -111,6 +144,8 @@ export default class Profile extends React.Component {
   render() {
     if (this.state.loading) return <h1>Loading...</h1>;
 
+    if (this.state.status === 404) return <Page404 />;
+
     if (!this.state.profileData)
       return <h1>{`Error! Status ${this.state.status}`}</h1>;
 
@@ -124,7 +159,6 @@ export default class Profile extends React.Component {
       suggestedUsers,
       trends,
     } = this.state.profileData;
-    if (userInfo.error) return <Page404 />;
 
     return (
       <React.Fragment>
@@ -147,10 +181,10 @@ export default class Profile extends React.Component {
               <Col xs={3}>
                 <Info
                   name={userInfo.name}
-                  official={!userInfo.bot}
+                  official={userInfo.official}
                   username={userInfo.username}
                   about={userInfo.about}
-                  ownUrl={userInfo.url}
+                  ownUrl={userInfo.ownUrl}
                   joined={userInfo.joined}
                 />
                 <CommonFollowers userId={userInfo.id} data={commonFollowers} />

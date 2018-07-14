@@ -1,10 +1,18 @@
 /* eslint import/prefer-default-export: 0 */
+// @flow
 import trends from '../data/trends';
+import type {
+  UserInfo,
+  FollowerInfo,
+  Tweet,
+  MediaPreview,
+  Trend,
+} from './types';
 
-const apiUrl = 'https://twitter-demo.erodionov.ru/api/v1';
-const token = process.env.REACT_APP_ACCESS_TOKEN;
+const apiUrl: string = 'https://twitter-demo.erodionov.ru/api/v1';
+const token: string = process.env.REACT_APP_ACCESS_TOKEN || '';
 
-export function getUserInfoById(id) {
+export function getUserInfoById(id: number): Promise<UserInfo> {
   return fetch(`${apiUrl}/accounts/${id}?access_token=${token}`)
     .then(response => {
       if (!response.ok) {
@@ -31,7 +39,7 @@ export function getUserInfoById(id) {
     }));
 }
 
-export function getUserFollowers(userId) {
+export function getUserFollowers(userId: number): Promise<FollowerInfo[]> {
   return fetch(`${apiUrl}/accounts/${userId}/followers?access_token=${token}`)
     .then(response => {
       if (!response.ok) {
@@ -52,7 +60,7 @@ export function getUserFollowers(userId) {
     );
 }
 
-export function getUserFollowing(userId) {
+export function getUserFollowing(userId: number): Promise<FollowerInfo[]> {
   return fetch(`${apiUrl}/accounts/${userId}/following?access_token=${token}`)
     .then(response => {
       if (!response.ok) {
@@ -73,7 +81,7 @@ export function getUserFollowing(userId) {
     );
 }
 
-export function getUserTweets(userId) {
+export function getUserTweets(userId: number): Promise<Tweet[]> {
   return fetch(
     `${apiUrl}/accounts/${userId}/statuses?exclude_replies=yes&access_token=${token}`,
   )
@@ -103,7 +111,7 @@ export function getUserTweets(userId) {
     );
 }
 
-export function getUserTweetsWithReplies(userId) {
+export function getUserTweetsWithReplies(userId: number): Promise<Tweet[]> {
   return fetch(`${apiUrl}/accounts/${userId}/statuses?access_token=${token}`)
     .then(response => {
       if (!response.ok) {
@@ -131,7 +139,7 @@ export function getUserTweetsWithReplies(userId) {
     );
 }
 
-export function getUserTweetsWithMedia(userId) {
+export function getUserTweetsWithMedia(userId: number): Promise<Tweet[]> {
   return fetch(
     `${apiUrl}/accounts/${userId}/statuses?only_media=yes&access_token=${token}`,
   )
@@ -161,7 +169,7 @@ export function getUserTweetsWithMedia(userId) {
     );
 }
 
-export function getUserMediaPreview(userId) {
+export function getUserMediaPreview(userId: number): Promise<MediaPreview[]> {
   return fetch(
     `${apiUrl}/accounts/${userId}/statuses?only_media=yes&access_token=${token}`,
   )
@@ -181,14 +189,14 @@ export function getUserMediaPreview(userId) {
 }
 
 // Need user auth
-export function getCommonFollowers(userId) {
+export function getCommonFollowers(userId: number): Promise<FollowerInfo[]> {
   return getUserFollowers(userId);
 }
 
-export function getSuggestedUsers(userId) {
+export function getSuggestedUsers(userId: number): Promise<FollowerInfo[]> {
   return getUserFollowing(userId);
 }
 
-export function getTrends() {
+export function getTrends(): Promise<Trend[]> {
   return Promise.resolve(trends);
 }
