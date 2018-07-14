@@ -22,8 +22,7 @@ deploy:
     skip_cleanup: true
     on: master
   - provider: script
-    script: >
-      now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build
+    script: now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build
     skip_cleanup: true
     on:
       all_branches: true
