@@ -1,3 +1,6 @@
+branches:
+  only:
+    - master
 language: node_js
 node_js:
   - "node"
@@ -11,5 +14,3 @@ deploy:
   - provider: script
     script: now --public --name twitter-demo-frontend --token $NOW_TOKEN ./build && now alias twitter-demo-frontend-scrat98.now.sh --token $NOW_TOKEN
     skip_cleanup: true
-    on:
-      branch: master
