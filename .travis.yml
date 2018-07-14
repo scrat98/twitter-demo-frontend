@@ -9,8 +9,7 @@ cache:
   yarn: true
   directories:
     - "node_modules"
-before_script:
-  - echo "Deploying $TRAVIS_BRANCH branch"
+before_script: echo $TRAVIS_BRANCH
 script: yarn build
 before_deploy: npm -g install now
 deploy:
