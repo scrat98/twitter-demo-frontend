@@ -7,16 +7,18 @@ import joinedIcon from './icons/joined.svg';
 import linkIcon from './icons/link.svg';
 import locationIcon from './icons/location.svg';
 
+import { getFormattedDate } from '../utils';
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin: 2rem 0 1rem 0;
 `;
 
 const Name = styled.h1`
   display: flex;
   align-items: center;
-  margin: 2rem 0 0.5rem 0;
+  margin: 0 0 0.5rem 0;
   font-size: 1.4rem;
   color: #14171a;
   font-weight: bold;
@@ -104,7 +106,7 @@ const Actions = styled.div`
 export default ({
   name,
   official,
-  id,
+  username,
   followed,
   about,
   location,
@@ -112,17 +114,17 @@ export default ({
   joined,
 }) => (
   <Wrapper>
-    <Name official={official}>{name}</Name>
+    {name && <Name official={official}>{name}</Name>}
     <NickName>
-      <span>@{id}</span>
+      <span>@{username}</span>
       {followed && <Followed>Follows you</Followed>}
     </NickName>
-    {about && <About>{about}</About>}
+    {about && <About dangerouslySetInnerHTML={{ __html: about }} />}
     {location && <Location>{location}</Location>}
     {ownUrl && (
       <OwnUrl href={ownUrl}>{ownUrl.replace(/(^\w+:|^)\/\//, '')}</OwnUrl>
     )}
-    <Joined>Joined {joined}</Joined>
+    <Joined>Joined {getFormattedDate(joined)}</Joined>
     <Actions>
       <Button>Tweet to</Button>
       <Button>Message</Button>
