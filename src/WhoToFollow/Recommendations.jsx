@@ -2,10 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Recommendation from './Recommendation';
 
-const avatar1 = `${process.env.PUBLIC_URL}/img/avatar1.png`;
-const avatar2 = `${process.env.PUBLIC_URL}/img/avatar2.png`;
-const avatar3 = `${process.env.PUBLIC_URL}/img/avatar3.png`;
-
 const List = styled.ul`
   display: flex;
   flex-direction: column;
@@ -24,29 +20,12 @@ const RecommendWrapper = styled.li`
   padding: 1rem 0;
 `;
 
-export default () => (
+export default ({ data }) => (
   <List>
-    <RecommendWrapper>
-      <Recommendation
-        avatar={avatar1}
-        name="Apple Insider"
-        nickName="appleinsider"
-      />
-    </RecommendWrapper>
-    <RecommendWrapper>
-      <Recommendation
-        avatar={avatar2}
-        name="Creode"
-        official
-        nickName="Creode"
-      />
-    </RecommendWrapper>
-    <RecommendWrapper>
-      <Recommendation
-        avatar={avatar3}
-        name="Epiphany Search"
-        nickName="EpiphanySearch"
-      />
-    </RecommendWrapper>
+    {data.map(user => (
+      <RecommendWrapper>
+        <Recommendation {...user} />
+      </RecommendWrapper>
+    ))}
   </List>
 );

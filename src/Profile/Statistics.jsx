@@ -51,34 +51,34 @@ const Value = styled.span`
   font-weight: bold;
 `;
 
-export default () => (
+export default ({ userId }) => (
   <List>
     <Statistic>
-      <Link exact to="/EveryInteract">
+      <Link exact to={`/${userId}`}>
         <Name>Tweets</Name>
         <Value>8,058</Value>
       </Link>
     </Statistic>
     <Statistic>
-      <Link exact to="/EveryInteract/following">
+      <Link exact to={`/${userId}/following`}>
         <Name>Following</Name>
         <Value>721</Value>
       </Link>
     </Statistic>
     <Statistic>
-      <Link exact to="/EveryInteract/followers">
+      <Link exact to={`/${userId}/followers`}>
         <Name>Followers</Name>
         <Value>1,815</Value>
       </Link>
     </Statistic>
     <Statistic>
-      <Link exact to="/EveryInteract/likes">
+      <Link exact to={`/${userId}/likes`}>
         <Name>Likes</Name>
         <Value>460</Value>
       </Link>
     </Statistic>
     <Statistic>
-      <Link exact to="/EveryInteract/lists">
+      <Link exact to={`/${userId}/lists`}>
         <Name>Lists</Name>
         <Value>2</Value>
       </Link>

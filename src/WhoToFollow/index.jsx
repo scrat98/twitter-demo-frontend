@@ -13,10 +13,10 @@ const Wrapper = styled.div`
   padding: 1rem;
 `;
 
-export default () => (
+export default ({ data }) => (
   <Wrapper>
     <Header />
-    <Recommendations />
+    <Recommendations data={data} />
     <Footer />
   </Wrapper>
 );

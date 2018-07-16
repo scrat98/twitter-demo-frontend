@@ -1,3 +1,5 @@
+/* eslint import/prefer-default-export: 0 */
+
 import numbro from 'numbro';
 
 export function getFormattedTweets(tweets) {
