@@ -5,9 +5,6 @@ import Statistics from './Statistics';
 import FollowButton from '../UI/FollowButton';
 import moreActionsIcon from './icons/more-actions.svg';
 
-const background = `${process.env.PUBLIC_URL}/img/background.png`;
-const avatar = `${process.env.PUBLIC_URL}/img/avatar.png`;
-
 const Background = styled.img`
   display: block;
   width: 100%;
@@ -60,7 +57,7 @@ const MoreActionsButton = styled.button`
   margin-left: 1rem;
 `;
 
-export default () => (
+export default ({ userId, avatar, background }) => (
   <React.Fragment>
     <Background src={background} alt="Profile Background" />
     <Navigation>
@@ -72,7 +69,7 @@ export default () => (
             </AvatarWrapper>
           </Col>
           <Col xs={6}>
-            <Statistics />
+            <Statistics userId={userId} />
           </Col>
           <Col xs={3}>
             <ActionsWrapper>

@@ -3,13 +3,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import mediaIcon from './icons/media.svg';
 
-const media1 = `${process.env.PUBLIC_URL}/img/media1.png`;
-const media2 = `${process.env.PUBLIC_URL}/img/media2.png`;
-const media3 = `${process.env.PUBLIC_URL}/img/media3.png`;
-const media4 = `${process.env.PUBLIC_URL}/img/media4.png`;
-const media5 = `${process.env.PUBLIC_URL}/img/media5.png`;
-const media6 = `${process.env.PUBLIC_URL}/img/media6.png`;
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -60,28 +53,17 @@ const Media = styled.img`
   box-shadow: 0 1px 2px 0 black;
 `;
 
-export default () => (
+export default ({ userId, data }) => (
   <Wrapper>
-    <AllMediaLink to="/EveryInteract/media">522 Photos and videos</AllMediaLink>
+    <AllMediaLink to={`/${userId}/media`}>
+      {`${data.length} Photos and videos`}
+    </AllMediaLink>
     <List>
-      <MediaWrapper>
-        <Media src={media1} />
-      </MediaWrapper>
-      <MediaWrapper>
-        <Media src={media2} />
-      </MediaWrapper>
-      <MediaWrapper>
-        <Media src={media3} />
-      </MediaWrapper>
-      <MediaWrapper>
-        <Media src={media4} />
-      </MediaWrapper>
-      <MediaWrapper>
-        <Media src={media5} />
-      </MediaWrapper>
-      <MediaWrapper>
-        <Media src={media6} />
-      </MediaWrapper>
+      {data.slice(0, 6).map(media => (
+        <MediaWrapper>
+          <Media src={media} />
+        </MediaWrapper>
+      ))}
     </List>
   </Wrapper>
 );
