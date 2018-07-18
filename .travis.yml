@@ -1,0 +1,32 @@
+language: node_js
+node_js:
+  - "node"
+
+branches:
+  only:
+    - master
+    - /^feat\/.*$/
+
+env:
+  global:
+    - NOW_BRANCH_NAME="${TRAVIS_BRANCH//\//-}"
+    - APP_NAME="twitter-demo-frontend-scrat98"
+
+cache:
+  yarn: true
+  directories:
+    - "node_modules"
+
+script: yarn build
+before_deploy: npm -g install now
+deploy:
+  - provider: script
+    script: now --public --name $APP_NAME --token $NOW_TOKEN ./build && now alias $APP_NAME.now.sh --token $NOW_TOKEN
+    skip_cleanup: true
+    on: master
+  - provider: script
+    script: now --public --name $APP_NAME --token $NOW_TOKEN ./build && now alias $APP_NAME-$NOW_BRANCH_NAME.now.sh --token $NOW_TOKEN
+    skip_cleanup: true
+    on:
+      all_branches: true
+      condition: $TRAVIS_BRANCH =~ ^feat\/.*$
