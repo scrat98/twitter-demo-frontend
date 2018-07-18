@@ -3,6 +3,13 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import followersIcon from './icons/followers.svg';
 
+const avatar4 = `${process.env.PUBLIC_URL}/img/avatar4.png`;
+const avatar5 = `${process.env.PUBLIC_URL}/img/avatar5.png`;
+const avatar6 = `${process.env.PUBLIC_URL}/img/avatar6.png`;
+const avatar7 = `${process.env.PUBLIC_URL}/img/avatar7.png`;
+const avatar8 = `${process.env.PUBLIC_URL}/img/avatar8.png`;
+const avatar9 = `${process.env.PUBLIC_URL}/img/avatar9.png`;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -51,17 +58,30 @@ const Follower = styled.img`
   height: 48px;
 `;
 
-export default ({ userId, data }) => (
+export default () => (
   <Wrapper>
-    <AllFollowersLink to={`/${userId}/followers`}>
-      {`${data.length} Followers you know`}
+    <AllFollowersLink to="/EveryInteract/followers">
+      6 Followers you know
     </AllFollowersLink>
     <List>
-      {data.map(follower => (
-        <FollowerWrapper>
-          <Follower src={follower} />
-        </FollowerWrapper>
-      ))}
+      <FollowerWrapper>
+        <Follower src={avatar4} />
+      </FollowerWrapper>
+      <FollowerWrapper>
+        <Follower src={avatar5} />
+      </FollowerWrapper>
+      <FollowerWrapper>
+        <Follower src={avatar6} />
+      </FollowerWrapper>
+      <FollowerWrapper>
+        <Follower src={avatar7} />
+      </FollowerWrapper>
+      <FollowerWrapper>
+        <Follower src={avatar8} />
+      </FollowerWrapper>
+      <FollowerWrapper>
+        <Follower src={avatar9} />
+      </FollowerWrapper>
     </List>
   </Wrapper>
 );
