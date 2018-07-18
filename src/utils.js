@@ -1,8 +1,10 @@
 /* eslint import/prefer-default-export: 0 */
 
 import numbro from 'numbro';
+import { matchPath } from 'react-router-dom';
+import { format } from 'date-fns';
 
-export function getFormattedTweets(tweets) {
+export function getFormattedNumber(number) {
   const shortNumberFormat = {
     thousandSeparated: true,
   };
@@ -14,13 +16,21 @@ export function getFormattedTweets(tweets) {
     trimMantissa: true,
   };
 
-  if (tweets < 10000) {
-    return numbro(tweets)
+  if (number < 10000) {
+    return numbro(number)
       .format(shortNumberFormat)
       .toUpperCase();
   }
 
-  return numbro(tweets)
+  return numbro(number)
     .format(longNumberFormat)
     .toUpperCase();
+}
+
+export function getFormattedDate(timestamp, formatPattern = 'MMMM YYYY') {
+  return format(timestamp, formatPattern);
+}
+
+export function computeMatch(pathname, { path, strict, exact, sensitive }) {
+  return !!matchPath(pathname, { path, strict, exact, sensitive });
 }

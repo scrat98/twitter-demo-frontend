@@ -80,13 +80,13 @@ const CloseButton = styled.button`
   margin: 0;
 `;
 
-export default ({ avatar, name, official, id }) => (
+export default ({ avatar, name, username, official, id }) => (
   <Wrapper>
     <AccountLink to={`/${id}`}>
-      <Avatar src={avatar} alt="avatar" />
+      <Avatar src={avatar} alt={`@${username}`} />
       <Name official={official}>{name}</Name>
       {official && <OfficialImage src={officialIcon} alt="official" />}
-      <NickName>@{id}</NickName>
+      <NickName>@{username}</NickName>
     </AccountLink>
     <FollowButton small />
     <CloseButton>
