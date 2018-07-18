@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+// import queryString from 'query-string';
 import { Link } from 'react-router-dom';
 import { getFormattedNumber } from '../utils';
 
