@@ -15,14 +15,11 @@ import Media from './Media';
 import Page404 from '../Page404';
 
 import {
+  isUserExist,
   getCommonFollowers,
   getUserInfoById,
   getUserMediaPreview,
   getUserTweets,
-  getUserTweetsWithReplies,
-  getUserTweetsWithMedia,
-  getUserFollowers,
-  getUserFollowing,
   getSuggestedUsers,
   getTrends,
 } from './api';
@@ -32,187 +29,92 @@ const MainContentWrapper = styled.div`
   padding-top: 0.5rem;
 `;
 
-export default class Profile extends React.Component {
-  state = {
-    profileData: null,
-    status: undefined,
-    loading: true,
-  };
+export default ({ match }) => {
+  const { userId } = match.params;
+  if (!isUserExist(userId)) return <Page404 />;
 
-  componentDidMount() {
-    const { userId } = this.props.match.params;
-    this.loadAsyncProfileData(userId);
-  }
+  const userInfo = getUserInfoById(userId);
+  const commonFollowers = getCommonFollowers(userId);
+  const media = getUserMediaPreview(userId);
+  const tweets = getUserTweets(userId);
 
-  componentDidUpdate(prevProps) {
-    const { userId } = this.props.match.params;
-    const { userId: prevUserId } = prevProps.match.params;
-    if (userId !== prevUserId) {
-      this.loadAsyncProfileData(userId);
-    }
-  }
+  const suggestedUsers = getSuggestedUsers();
+  const trends = getTrends();
 
-  loadAsyncProfileData(userId) {
-    this.setState({
-      loading: true,
-    });
-
-    Promise.all([
-      getUserInfoById(userId),
-      getUserMediaPreview(userId),
-      getUserTweets(userId),
-      getUserTweetsWithReplies(userId),
-      getUserTweetsWithMedia(userId),
-      getUserFollowers(userId),
-      getUserFollowing(userId),
-      getCommonFollowers(userId),
-      getSuggestedUsers(userId),
-      getTrends(),
-    ])
-      .then(data => {
-        const [
-          userInfo,
-          media,
-          tweets,
-          tweetsWithReplies,
-          tweetsWithMedia,
-          userFollowers,
-          userFollowing,
-          commonFollowers,
-          suggestedUsers,
-          trends,
-        ] = data;
-        this.setState({
-          profileData: {
-            userInfo,
-            media,
-            tweets,
-            tweetsWithReplies,
-            tweetsWithMedia,
-            userFollowers,
-            userFollowing,
-            commonFollowers,
-            suggestedUsers,
-            trends,
-          },
-          status: 200,
-          loading: false,
-        });
-      })
-      .catch(status => {
-        this.setState({
-          profileData: null,
-          status,
-          loading: false,
-        });
-      });
-  }
-
-  render() {
-    if (this.state.loading) return <h1>Loading...</h1>;
-
-    if (!this.state.profileData)
-      return <h1>{`Error! Status ${this.state.status}`}</h1>;
-
-    const {
-      userInfo,
-      commonFollowers,
-      media,
-      tweets,
-      tweetsWithReplies,
-      tweetsWithMedia,
-      suggestedUsers,
-      trends,
-    } = this.state.profileData;
-    if (userInfo.error) return <Page404 />;
-
-    return (
-      <React.Fragment>
-        <Helmet>
-          <title>{`${userInfo.name} (@${userInfo.username})`}</title>
-        </Helmet>
-        <Header
-          userId={userInfo.id}
-          avatar={userInfo.avatar}
-          background={userInfo.background}
-          tweets={userInfo.tweetsCount}
-          following={userInfo.followingCount}
-          followers={userInfo.followersCount}
-          likes={userInfo.likes}
-          lists={userInfo.lists}
-        />
-        <MainContentWrapper>
-          <Grid>
-            <Row>
-              <Col xs={3}>
-                <Info
-                  name={userInfo.name}
-                  official={!userInfo.bot}
-                  username={userInfo.username}
-                  about={userInfo.about}
-                  ownUrl={userInfo.url}
-                  joined={userInfo.joined}
-                />
-                <CommonFollowers userId={userInfo.id} data={commonFollowers} />
-                <Media userId={userInfo.id} data={media} />
-              </Col>
-              <Col xs={6}>
-                <Route
-                  exact
-                  path={`/${userInfo.id}/(tweets|with_replies|media)?`}
-                  render={() => (
-                    <React.Fragment>
-                      <TweetsNavigation userId={userInfo.id} />
-                      <Switch>
-                        <Route
-                          exact
-                          path={`/${userInfo.id}/(tweets)?`}
-                          render={() => <Tweets data={tweets} />}
-                        />
-                        <Route
-                          exact
-                          path={`/${userInfo.id}/with_replies`}
-                          render={() => <Tweets data={tweetsWithReplies} />}
-                        />
-                        <Route
-                          exact
-                          path={`/${userInfo.id}/media`}
-                          render={() => <Tweets data={tweetsWithMedia} />}
-                        />
-                      </Switch>
-                    </React.Fragment>
-                  )}
-                />
-                <Route
-                  exact
-                  path={`/${userInfo.id}/following`}
-                  render={() => <h1>Following</h1>}
-                />
-                <Route
-                  exact
-                  path={`/${userInfo.id}/followers`}
-                  render={() => <h1>Followers</h1>}
-                />
-                <Route
-                  exact
-                  path={`/${userInfo.id}/likes`}
-                  render={() => <h1>Likes</h1>}
-                />
-                <Route
-                  exact
-                  path={`/${userInfo.id}/lists`}
-                  render={() => <h1>Lists</h1>}
-                />
-              </Col>
-              <Col xs={3}>
-                <WhoToFollow data={suggestedUsers} />
-                <Trends data={trends} header="United Kingdom Trends" />
-                <Footer />
-              </Col>
-            </Row>
-          </Grid>
-        </MainContentWrapper>
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <Helmet>
+        <title>{`${userInfo.name} (@${userInfo.id})`}</title>
+      </Helmet>
+      <Header
+        userId={userInfo.id}
+        avatar={userInfo.avatar}
+        background={userInfo.background}
+      />
+      <MainContentWrapper>
+        <Grid>
+          <Row>
+            <Col xs={3}>
+              <Info {...userInfo} />
+              <CommonFollowers userId={userInfo.id} data={commonFollowers} />
+              <Media userId={userId} data={media} />
+            </Col>
+            <Col xs={6}>
+              <Route
+                exact
+                path={`/${userId}/(tweets|with_replies|media)?`}
+                render={() => (
+                  <React.Fragment>
+                    <TweetsNavigation userId={userId} />
+                    <Switch>
+                      <Route
+                        exact
+                        path={`/${userId}/(tweets)?`}
+                        render={() => <Tweets data={tweets} />}
+                      />
+                      <Route
+                        exact
+                        path={`/${userId}/with_replies`}
+                        render={() => <h1>With replies</h1>}
+                      />
+                      <Route
+                        exact
+                        path={`/${userId}/media`}
+                        render={() => <h1>Media</h1>}
+                      />
+                    </Switch>
+                  </React.Fragment>
+                )}
+              />
+              <Route
+                exact
+                path={`/${userId}/following`}
+                render={() => <h1>Following</h1>}
+              />
+              <Route
+                exact
+                path={`/${userId}/followers`}
+                render={() => <h1>Followers</h1>}
+              />
+              <Route
+                exact
+                path={`/${userId}/likes`}
+                render={() => <h1>Likes</h1>}
+              />
+              <Route
+                exact
+                path={`/${userId}/lists`}
+                render={() => <h1>Lists</h1>}
+              />
+            </Col>
+            <Col xs={3}>
+              <WhoToFollow data={suggestedUsers} />
+              <Trends data={trends} header="United Kingdom Trends" />
+              <Footer />
+            </Col>
+          </Row>
+        </Grid>
+      </MainContentWrapper>
+    </React.Fragment>
+  );
+};

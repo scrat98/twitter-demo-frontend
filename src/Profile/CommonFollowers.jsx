@@ -51,23 +51,17 @@ const Follower = styled.img`
   height: 48px;
 `;
 
-export default ({ userId, data }) => {
-  if (!data.length) return null;
-
-  return (
-    <Wrapper>
-      <AllFollowersLink to={`/${userId}/followers`}>
-        {`${data.length} Followers you know`}
-      </AllFollowersLink>
-      <List>
-        {data.slice(0, 10).map(follower => (
-          <FollowerWrapper>
-            <Link to={`/${follower.id}`} title={`@${follower.username}`}>
-              <Follower src={follower.avatar} alt={`@${follower.username}`} />
-            </Link>
-          </FollowerWrapper>
-        ))}
-      </List>
-    </Wrapper>
-  );
-};
+export default ({ userId, data }) => (
+  <Wrapper>
+    <AllFollowersLink to={`/${userId}/followers`}>
+      {`${data.length} Followers you know`}
+    </AllFollowersLink>
+    <List>
+      {data.map(follower => (
+        <FollowerWrapper>
+          <Follower src={follower} />
+        </FollowerWrapper>
+      ))}
+    </List>
+  </Wrapper>
+);

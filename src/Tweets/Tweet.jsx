@@ -5,9 +5,6 @@ import commentIcon from './icons/comments.svg';
 import envelopeIcon from './icons/envelope.svg';
 import likesIcon from './icons/loves.svg';
 import retweetIcon from './icons/retweet.svg';
-import pinnedIcon from './icons/pinned.svg';
-
-import { getFormattedDate, getFormattedNumber } from '../utils';
 
 const Wrapper = styled.div`
   cursor: pointer;
@@ -116,44 +113,42 @@ const ActionCount = styled.span`
 `;
 
 export default ({
-  pinned,
+  context,
+  contextImg,
   userFullName,
   userNickName,
   userAvatar,
   time,
-  content,
-  media,
+  text,
+  img,
   replies,
   retweets,
   likes,
 }) => (
   <Wrapper>
-    {pinned && <Context img={pinnedIcon}>Pinned Tweet</Context>}
+    {context && <Context img={contextImg}>{context}</Context>}
     <Content>
       <ContentHeader>
         <UserFullName>{userFullName}</UserFullName>
         <UserNickName>@{userNickName}</UserNickName>
-        <TweetTime>• {getFormattedDate(time, 'DD MMMM YYYY')}</TweetTime>
+        <TweetTime>• {time}</TweetTime>
         <UserAvatar src={userAvatar} />
       </ContentHeader>
-      {content && <TweetText dangerouslySetInnerHTML={{ __html: content }} />}
-      {media.length > 0 &&
-        media.map(attachment => <TweetImg src={attachment.preview_url} />)}
+      {text && <TweetText>{text}</TweetText>}
+      {img && <TweetImg src={img} />}
     </Content>
     <ActionsList>
       <Action>
         <img src={commentIcon} alt="replies" />
-        <ActionCount>{replies > 0 && getFormattedNumber(replies)}</ActionCount>
+        <ActionCount>{replies > 0 && replies}</ActionCount>
       </Action>
       <Action>
         <img src={retweetIcon} alt="retweet" />
-        <ActionCount>
-          {retweets > 0 && getFormattedNumber(retweets)}
-        </ActionCount>
+        <ActionCount>{retweets > 0 && retweets}</ActionCount>
       </Action>
       <Action>
         <img src={likesIcon} alt="likes" />
-        <ActionCount>{likes > 0 && getFormattedNumber(likes)}</ActionCount>
+        <ActionCount>{likes > 0 && likes}</ActionCount>
       </Action>
       <Action>
         <img src={envelopeIcon} alt="message" />

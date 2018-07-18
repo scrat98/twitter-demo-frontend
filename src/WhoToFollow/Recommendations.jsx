@@ -22,7 +22,7 @@ const RecommendWrapper = styled.li`
 
 export default ({ data }) => (
   <List>
-    {data.slice(0, 3).map(user => (
+    {data.map(user => (
       <RecommendWrapper>
         <Recommendation {...user} />
       </RecommendWrapper>

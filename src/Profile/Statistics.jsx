@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { computeMatch, getFormattedNumber } from '../utils';
 
 const List = styled.ul`
   display: flex;
@@ -52,45 +51,36 @@ const Value = styled.span`
   font-weight: bold;
 `;
 
-export default ({ userId, tweets, followers, following, likes, lists }) => (
+export default ({ userId }) => (
   <List>
     <Statistic>
-      <Link
-        exact
-        to={`/${userId}`}
-        isActive={(match, location) =>
-          computeMatch(location.pathname, {
-            path: `/${userId}/(tweets|with_replies|media)?`,
-            exact: true,
-          })
-        }
-      >
+      <Link exact to={`/${userId}`}>
         <Name>Tweets</Name>
-        <Value>{getFormattedNumber(tweets)}</Value>
+        <Value>8,058</Value>
       </Link>
     </Statistic>
     <Statistic>
       <Link exact to={`/${userId}/following`}>
         <Name>Following</Name>
-        <Value>{getFormattedNumber(following)}</Value>
+        <Value>721</Value>
       </Link>
     </Statistic>
     <Statistic>
       <Link exact to={`/${userId}/followers`}>
         <Name>Followers</Name>
-        <Value>{getFormattedNumber(followers)}</Value>
+        <Value>1,815</Value>
       </Link>
     </Statistic>
     <Statistic>
       <Link exact to={`/${userId}/likes`}>
         <Name>Likes</Name>
-        <Value>{getFormattedNumber(likes)}</Value>
+        <Value>460</Value>
       </Link>
     </Statistic>
     <Statistic>
       <Link exact to={`/${userId}/lists`}>
         <Name>Lists</Name>
-        <Value>{getFormattedNumber(lists)}</Value>
+        <Value>2</Value>
       </Link>
     </Statistic>
   </List>
