@@ -10,7 +10,8 @@ branches:
 env:
   global:
     - NOW_BRANCH_NAME="${TRAVIS_BRANCH//\//-}"
-    - APP_NAME="twitter-demo-frontend-scrat98"
+    - APP_NAME="twitter-demo-frontend"
+    - APP_BASE_ALIAS="twitter-demo-frontend-scrat98"
 
 cache:
   yarn: true
@@ -21,11 +22,11 @@ script: yarn build
 before_deploy: npm -g install now
 deploy:
   - provider: script
-    script: now --public --name $APP_NAME --token $NOW_TOKEN ./build && now alias $APP_NAME.now.sh --token $NOW_TOKEN
+    script: now --public --name $APP_NAME --token $NOW_TOKEN ./build && now alias $APP_BASE_ALIAS.now.sh --token $NOW_TOKEN
     skip_cleanup: true
     on: master
   - provider: script
-    script: now --public --name $APP_NAME --token $NOW_TOKEN ./build && now alias $APP_NAME-$NOW_BRANCH_NAME.now.sh --token $NOW_TOKEN
+    script: now --public --name $APP_NAME --token $NOW_TOKEN ./build && now alias $APP_BASE_ALIAS-$NOW_BRANCH_NAME.now.sh --token $NOW_TOKEN
     skip_cleanup: true
     on:
       all_branches: true
